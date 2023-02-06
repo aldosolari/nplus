@@ -161,6 +161,23 @@ range(which(resI > alpha)) - 1
 #> [1] 14 25
 ```
 
+Different combining function:
+
+``` r
+nplus_bound(p, method="ASimes", alpha = 0.1)
+#> $lo
+#> [1] 10
+#> 
+#> $up
+#> [1] 37
+nplus_fwer(p, method="ASimes", alpha = 0.1)
+#> $positive
+#> [1]  3  6  7 11 13 16 17 19
+#> 
+#> $negative
+#> [1] 26 29 41 43 46 47 48
+```
+
 # References
 
 Heller, R., & Solari, A. (2023). Simultaneous directional inference.

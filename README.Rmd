@@ -91,6 +91,13 @@ resI <- nplus_pvalue(p, ix = I)
 range(which(resI > alpha)) - 1
 ```
 
+Different combining function:
+
+```{r}
+nplus_bound(p, method="ASimes", alpha = 0.1)
+nplus_fwer(p, method="ASimes", alpha = 0.1)
+```
+
 # References
 
 Heller, R., & Solari, A. (2023). Simultaneous directional inference. arXiv preprint arXiv:2301.01653.
