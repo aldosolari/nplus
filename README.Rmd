@@ -13,6 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+<img src="sticker.png" align="right" alt="" width="200" />
+
+
 # nplus
 
 <!-- badges: start -->
