@@ -1,0 +1,97 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# nplus
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+nplus is the package developed to provide confidence bounds on the number of positive parameters on subsets of interest by using the partitioning principle. Details may be found in Heller and Solari (2023) <arXiv:2301.01653>.
+
+# Installation
+
+The latest version of the package can be installed with:
+
+``` r
+devtools::install_github("aldosolari/nplus")
+```
+
+# Example
+
+Generate $X_i \sim N(\theta_i,1)$ with $\theta_i = 2$ for $i=1,\ldots,25$ and $\theta_i = -2$ for $i=26,\ldots,50$. Let $n^+$ denote the number of positive parameters in the vector $\theta=(\theta_1,\ldots,\theta_n)$. In our simulated data, $n^+ = 25$. 
+
+The right-sided $p$-values for the null hypotheses $H_i: \theta_i \leq 0$ are computed as $P_i = 1-\Phi(X_i)$, where $\Phi$ is the cdf of the standard normal distribution. 
+
+```{r}
+set.seed(123)
+x <- rnorm(50, mean = c(rep(2, 25), rep(-2, 25)))
+p <- pnorm(x, lower.tail = FALSE)
+n <- length(p)
+```
+
+To get $(1-\alpha)$-confidence lower and upper bounds for the number of positive parameters $n^+$:
+
+```{r}
+library(nplus)
+nplus_bound(p, alpha = 0.1)
+```
+
+To get $p$-values for the null hypotheses $n^+=v$ for $v=0,\ldots,n$:
+
+```{r}
+res <- nplus_pvalue(p)
+res
+```
+
+Plot of the $p$-value function:
+
+```{r}
+plot(0:n, res, xlab="n+", ylab="p-value")
+alpha = 0.1
+abline(h = alpha)
+segments(x0=min(which(res>alpha))-1, x1=min(which(res>alpha))-1, y0=0, y1=alpha)
+segments(x0=max(which(res>alpha))-1, x1=max(which(res>alpha))-1, y0=0, y1=alpha)
+```
+
+To get lower and upper bounds for $n^+$ from the $p$-values:
+
+```{r}
+range(which(res > alpha)) - 1
+```
+
+Index set of identified positive parameters (i.e. $i:\theta_i >0$) and negative parameters ($i:\theta_i <0$) with familywise error rate control at level $\alpha$:
+
+```{r}
+nplus_fwer(p, alpha = 0.1)
+```
+
+For any subset $\mathcal{I} \subset \{1,\ldots,n\}$, let $n^+(\mathcal{I})$ denote the number of positive parameters in the vector $\theta(\mathcal{I}) = (\theta_i, i\in \mathcal{I})$. In our simulated data, $n^+(\mathcal{I}) = 25$ for $\mathcal{I}=\{1,2,\ldots,25\}$. 
+
+To get $p$-values for the null hypotheses $n^+(\mathcal{I})=v$ for $v=0,\ldots,|\mathcal{I}|$:
+
+```{r}
+I = 1:25
+resI <- nplus_pvalue(p, ix = I)
+# lower and upper bound for n+(I)
+range(which(resI > alpha)) - 1
+```
+
+# References
+
+Heller, R., & Solari, A. (2023). Simultaneous directional inference. arXiv preprint arXiv:2301.01653.
+
+# Did you find some bugs?
+
+Please write to solari.aldo@gmail.com.

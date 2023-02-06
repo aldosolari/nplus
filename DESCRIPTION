@@ -1,0 +1,14 @@
+Package: nplus
+Type: Package
+Title: Simultaneous Directional Inference by Partitioning
+Version: 0.1.0
+Author: Aldo Solari and Ruth Heller
+Maintainer: Aldo Solari <solari.aldo@gmail.com>
+Description: It provides confidence bounds on the number of positive parameters on subsets of interest by using the partitioning principle. Details may be found in Heller and Solari (2023) <arXiv:2301.01653>.
+License: WGPL (>= 2)
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+BugReports: https://github.com/aldosolari/nplus/issues
+URL: https://github.com/aldosolari/nplus
+RoxygenNote: 7.2.1
