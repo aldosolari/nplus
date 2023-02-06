@@ -1,10 +1,10 @@
-#' @title Shortcut for determining the index set of positive and negative parameters with FWER control at level alpha
+#' @title Shortcut for determining the index set of positive and nonpositive parameters with FWER control at level alpha
 #'
 #' @param p_right_tail vector of p-values for the null hypotheses H_i: theta_i <= 0, i = 1,...,n
 #' @param method combining function specification. Default is Fisher's combination method
 #' @param alpha The significance level of the test procedure. Default is 0.05
 #'
-#' @return index set of positive parameters (i.e. i: theta_i > 0) and negative parameters (i.e. i: theta_i < 0) with FWER control at level alpha
+#' @return index set of positive parameters (i.e. i: theta_i > 0) and nonpositive parameters (i.e. i: theta_i <= 0) with FWER control at level alpha
 #' @export
 #'
 #' @examples
@@ -71,7 +71,7 @@ nplus_fwer = function(p_right_tail, method="Fisher", alpha = 0.05){
   R_ix1 <- ix1[R1==1]
   R_ix2 <- ix2[R2==1]
 
-  return(list(positive = R_ix1, negative = R_ix2))
+  return(list(positive = R_ix1, nonpositive = R_ix2))
 }
 
 

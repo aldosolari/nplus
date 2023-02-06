@@ -2,7 +2,7 @@
 % Please edit documentation in R/nplus_fwer.R
 \name{nplus_fwer}
 \alias{nplus_fwer}
-\title{Shortcut for determining the index set of positive and negative parameters with FWER control at level alpha}
+\title{Shortcut for determining the index set of positive and nonpositive parameters with FWER control at level alpha}
 \usage{
 nplus_fwer(p_right_tail, method = "Fisher", alpha = 0.05)
 }
@@ -14,10 +14,10 @@ nplus_fwer(p_right_tail, method = "Fisher", alpha = 0.05)
 \item{alpha}{The significance level of the test procedure. Default is 0.05}
 }
 \value{
-index set of positive parameters (i.e. i: theta_i > 0) and negative parameters (i.e. i: theta_i < 0) with FWER control at level alpha
+index set of positive parameters (i.e. i: theta_i > 0) and nonpositive parameters (i.e. i: theta_i <= 0) with FWER control at level alpha
 }
 \description{
-Shortcut for determining the index set of positive and negative parameters with FWER control at level alpha
+Shortcut for determining the index set of positive and nonpositive parameters with FWER control at level alpha
 }
 \examples{
 # generate right-tailed p-values

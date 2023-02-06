@@ -74,7 +74,7 @@ To get lower and upper bounds for $n^+$ from the $p$-values:
 range(which(res > alpha)) - 1
 ```
 
-Index set of identified positive parameters (i.e. $i:\theta_i >0$) and negative parameters ($i:\theta_i <0$) with familywise error rate control at level $\alpha$:
+Index set of identified positive parameters (i.e. $i:\theta_i >0$) and nonpositive parameters ($i:\theta_i \leq 0$) with familywise error rate control at level $\alpha$:
 
 ```{r}
 nplus_fwer(p, alpha = 0.1)

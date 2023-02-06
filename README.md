@@ -121,8 +121,8 @@ range(which(res > alpha)) - 1
 
 Index set of identified positive parameters
 (i.e. ![i:\theta_i \>0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i%3A%5Ctheta_i%20%3E0 "i:\theta_i >0"))
-and negative parameters
-(![i:\theta_i \<0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i%3A%5Ctheta_i%20%3C0 "i:\theta_i <0"))
+and nonpositive parameters
+(![i:\theta_i \leq 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i%3A%5Ctheta_i%20%5Cleq%200 "i:\theta_i \leq 0"))
 with familywise error rate control at level
 ![\alpha](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Calpha "\alpha"):
 
@@ -131,7 +131,7 @@ nplus_fwer(p, alpha = 0.1)
 #> $positive
 #> [1]  3  6 16
 #> 
-#> $negative
+#> $nonpositive
 #> [1] 26
 ```
 
@@ -174,7 +174,7 @@ nplus_fwer(p, method="ASimes", alpha = 0.1)
 #> $positive
 #> [1]  3  6  7 11 13 16 17 19
 #> 
-#> $negative
+#> $nonpositive
 #> [1] 26 29 41 43 46 47 48
 ```
 
