@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<img src="sticker.png" align="right" alt="" width="200" />
+
 # nplus
 
 <!-- badges: start -->
